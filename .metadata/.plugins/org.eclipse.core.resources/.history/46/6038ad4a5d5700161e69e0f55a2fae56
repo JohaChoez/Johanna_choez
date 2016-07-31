@@ -1,0 +1,13 @@
+package vector_meses;
+
+public class proceso {
+
+	public proceso(String a[])
+	{	
+	}
+	
+	public void mostrar(String a[],int meses)
+	{
+	  System.out.print("TU MES SEGUN EL NUMERO INGRESADO ES : "+a[meses-1]);	
+	}
+}
