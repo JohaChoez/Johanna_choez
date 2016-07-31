@@ -1,0 +1,26 @@
+package correo;
+
+import javax.swing.JOptionPane;
+
+public class main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		usuario user[]=new usuario[4];
+		 System.out.println("**************************************************************");
+		 System.out.println("NUM\t  CORREO\t         CONTRASEÑA\t   TIPO DE CONTRASEÑA\t "); 	 
+		for(int i=0;i<=3;i++)
+		{
+			System.out.println();
+			System.out.print((i+1));
+
+			user[i]=new usuario();
+			do
+			{
+			  user[i].setEmail(JOptionPane.showInputDialog("POR FAVOR INGRESA TU CORREO "));
+			}
+			while(user[i].correo_valido()==false);
+			user[i].setContrasena(user[i].generarcontrasena());
+			System.out.print(user[i].getEmail()+"\t"+user[i].generarcontrasena()+"\t"+user[i].tipocontrasena(user[i].validar()));	
+			System.out.println("**************************************************************");
+		}}}

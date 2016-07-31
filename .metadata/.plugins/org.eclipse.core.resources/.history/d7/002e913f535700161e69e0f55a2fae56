@@ -1,0 +1,129 @@
+package correo;
+import java.util.Random;
+
+
+public class usuario implements contrasena{
+	
+	
+		
+		private int longitud=9;
+	    private String email;
+	    private String vect[];
+	    private String contrasena;
+		
+	    
+		public usuario() {
+			// TODO Auto-generated constructor stub
+		}
+
+
+		   public String getEmail() {
+				return email;
+			}
+
+
+			public void setEmail(String email) {
+				this.email = email;
+			}
+
+		@Override
+		public String getContrasena() {
+			// TODO Auto-generated method stub
+			return this.contrasena;
+		}
+
+
+		@Override
+		public void setContrasena(String contrasena) {
+			// TODO Auto-generated method stub
+			this.contrasena=contrasena;
+		}
+		
+		public int getLongitud_Contrasena() {
+			// TODO Auto-generated method stub
+			return this.longitud;
+		}
+
+		
+		public void setLongitud_Contrasena(int contrasena) {
+			// TODO Auto-generated method stub
+			this.longitud=contrasena;
+		}
+
+
+
+		
+		public String generar_contrasena() {
+			 String cadenaAleatoria = "";
+		        long milis = new java.util.GregorianCalendar().getTimeInMillis();
+		        Random r = new Random(milis);
+		        int x = 0;
+		        while ( x < longitud){
+		        char c = (char)r.nextInt(255);
+		        if ( (c >= '0' && c <='9') || (c >='A' && c <='Z') || (c >='a' && c <='z')){
+		        cadenaAleatoria += c;
+		        x ++;
+		        }
+		    
+		        }
+		        
+		        return cadenaAleatoria;
+		        }
+			
+		
+	    public boolean validar()
+	    {
+	    	int cont1=0,cont2=0,cont3=0;
+	    	for(int i=0;i<9;i++)
+	    	{
+	    	   if((getContrasena().charAt(i)>='A')||(getContrasena().charAt(i)<='Z'))
+	    		   cont1=cont1+1;
+	    	   else
+	    	   if((getContrasena().charAt(i)>='a')||(getContrasena().charAt(i)<='z'))
+	    		   cont2=cont2+1;
+	    	   else
+	    		   cont3=cont3+1;
+	    	}
+	    	
+	    	if((cont1>=2)&&(cont2>=1)&&(cont3>=5))
+	    		return true;
+	    	else
+	    		return false;
+	    }
+	    
+	 
+	    public boolean validar_correo()
+	    {
+	    	 this.email=this.email.trim();
+	         boolean auxiliar = false;
+	         int j = this.email.length() - 1;
+	         String letra, letra1 = "";
+	         try {
+	            for (int i = 0; 1 < j; i++) {
+	                 letra = "" + this.email.charAt(i);
+	                 if (letra.equals("@")) {
+	                      j++;
+	                      letra1 = this.email.substring(i, j);
+	                      letra1=letra1.toLowerCase();
+	                      if ((letra1.equals("@hotmail.com")) || (letra1.equals("@gmail.com"))||(letra1.equals("@yahoo.com"))) {
+	                           auxiliar = true;
+	                           break;
+	                      }
+	                  }
+	             }
+	         } catch (Exception e) {
+	         }
+	         return auxiliar;
+	    }
+
+		public String fuerte_debil(boolean a)
+	    {
+	    	if(a==true)
+	    	{
+	    		return "es fuerte";
+	    	}
+	    	else
+	    		return "es debil";
+	    }
+	     
+	}
