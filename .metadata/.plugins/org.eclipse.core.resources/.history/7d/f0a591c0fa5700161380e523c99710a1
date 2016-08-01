@@ -1,0 +1,36 @@
+package fichero;
+import java.io.IOException;
+
+
+public class main {
+
+			public static void main(String[] args) throws Exception {
+				
+				 tiempo mt1 = new tiempo("HILO_1");
+				 tiempo mt2 = new tiempo("HILO_2");
+				 mt1.thrd.setPriority(Thread.MAX_PRIORITY);
+				 mt2.thrd.setPriority(Thread.NORM_PRIORITY);
+				 mt1.thrd.start();
+				 mt2.thrd.start();
+				 try {
+				 mt1.thrd.join();
+				 mt2.thrd.join();
+				 }
+				 catch(InterruptedException exc) {
+				 System.out.println(" ");
+				 }
+				 System.out.println("\nPRIORIDAD ALTA:" + mt1.count);
+				 System.out.println("PRIORIDAD BAJA: " +mt2.count);
+				 System.out.println(); 
+				hilos hilo = new hilos(); 
+				hilo.start();
+				xml_hilo hilo2 = new xml_hilo(); 
+				System.out.println(); 
+				hilo2.start();
+				
+				
+				
+
+			}
+
+		}
